@@ -53,7 +53,6 @@ namespace DefaultNamespace
                 yield break;
             }
             
-            
             //removing is more tricky - we side step lack of hashing on structs by adding all and removing any that we find by id
             List<GeneratedPlane> toRemoveGeneratedPlanes = new List<GeneratedPlane>(generatedPlanes);
             for (var index = 0; index < currentScenePlanes.Length; index++)
@@ -112,7 +111,7 @@ namespace DefaultNamespace
                     case PlaneAction.UPDATE_EXTENTS:
                         generatedPlane.plane = currentScenePlane;
                         generatedPlane.DestroyGameObject();
-                        generatedPlane.go = GeneratedPlane.GenerateNewGameObject(scenePerceptionManager, generatedMeshMaterialTranslucent, anchorDisplayPrefab);
+                        generatedPlane.go = GeneratedPlane.GenerateNewGameObject(currentScenePlane, scenePerceptionManager, generatedMeshMaterialTranslucent, anchorDisplayPrefab);
                         break;
                     case PlaneAction.UPDATE_POSE:
                         scenePerceptionManager.ApplyTrackingOriginCorrectionToPlanePose(currentScenePlane, out var planePositionUnity, out var planeRotationUnity);

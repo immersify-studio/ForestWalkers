@@ -33,10 +33,10 @@ namespace DefaultNamespace
 
             AnchorPrefab axisDisplay = UnityEngine.Object.Instantiate(anchorDisplayPrefab, newPlaneMeshGO.transform, true);
             axisDisplay.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
-            return new GeneratedPlane(){uuid = uuid,plane= plane,go = GeneratedPlane.GenerateNewGameObject(scenePerceptionManager, generatedMeshMaterialTranslucent, axisDisplay)};
+            return new GeneratedPlane(){uuid = uuid,plane= plane,go = GeneratedPlane.GenerateNewGameObject(plane, scenePerceptionManager, generatedMeshMaterialTranslucent, axisDisplay)};
             
         }
-        public static GameObject GenerateNewGameObject(ScenePerceptionManager scenePerceptionManager,Material generatedMeshMaterialTranslucent,AnchorPrefab anchorDisplayPrefab)
+        public static GameObject GenerateNewGameObject(WVR_ScenePlane plane, ScenePerceptionManager scenePerceptionManager,Material generatedMeshMaterialTranslucent,AnchorPrefab anchorDisplayPrefab)
         {
             //Log.d(LOG_TAG, "Add new plane");
             GameObject newPlaneMeshGO = scenePerceptionManager.GenerateScenePlaneMesh(plane, generatedMeshMaterialTranslucent, true);
