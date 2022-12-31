@@ -103,8 +103,11 @@ namespace AssetBundleTool
 					{
 						yield return request.SendWebRequest();
 
+#pragma warning disable 618
 						if (request.isHttpError || request.isNetworkError)
 							continue;
+#pragma warning restore 618
+
 						ab = DownloadHandlerAssetBundle.GetContent(request);
 					}
 

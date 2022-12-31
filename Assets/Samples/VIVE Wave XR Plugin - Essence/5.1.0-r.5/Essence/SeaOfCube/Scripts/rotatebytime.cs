@@ -16,7 +16,9 @@ public class rotatebytime : MonoBehaviour {
 	public float AnglePerSecond = 45;
 	// If set, not change every frame.
 	public float ChangePerSecond = 0;
+#pragma warning disable 414
 	private int count = 0;
+#pragma warning restore 414
 	public bool AxisX = true;
 	public bool AxisY = false;
 	public bool AxisZ = true;

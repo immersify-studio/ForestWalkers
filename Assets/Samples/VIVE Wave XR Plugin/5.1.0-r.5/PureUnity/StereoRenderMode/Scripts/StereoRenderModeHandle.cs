@@ -62,11 +62,15 @@ public class StereoRenderModeHandle : MonoBehaviour
 		{
 			case 0:
 				// SinglePass
+#pragma warning disable 618
 				display.singlePassRenderingDisabled = false;
+#pragma warning restore 618
 				break;
 			case 1:
 				// MultiPass
+#pragma warning disable 618
 				display.singlePassRenderingDisabled = true;
+#pragma warning restore 618
 				break;
 			case 2:
 				XRSettings.eyeTextureResolutionScale = 1;
@@ -111,7 +115,9 @@ public class StereoRenderModeHandle : MonoBehaviour
 				display.GetRenderPass(i, out XRDisplaySubsystem.XRRenderPass pass);
 				sb.AppendLine().Append("RP").Append(i).Append(".RenderParamCount=").Append(pass.GetRenderParameterCount());
 			}
+#pragma warning disable 618
 			sb.AppendLine().Append("RenderMode=").Append(display.singlePassRenderingDisabled ? "MultiPass" : "SinglePass");
+#pragma warning restore 618
 			sb.AppendLine().Append("RenderMode=").Append(XRSettings.stereoRenderingMode);
 			sb.AppendLine().Append("ResolutionScale=").Append(XRSettings.eyeTextureResolutionScale);
 			sb.AppendLine().Append("FPS=").Append(Mathf.RoundToInt(fps));
@@ -123,14 +129,18 @@ public class StereoRenderModeHandle : MonoBehaviour
 	public void OnSinglePassButtonPressed()
     {
 		if (display == null) return;
+#pragma warning disable 618
 		display.singlePassRenderingDisabled = false;
+#pragma warning restore 618
 		hasChange = 3;
 	}
 
 	public void OnMultiPassButtonPressed()
 	{
 		if (display == null) return;
+#pragma warning disable 618
 		display.singlePassRenderingDisabled = true;
+#pragma warning restore 618
 		hasChange = 3;
 	}
 
