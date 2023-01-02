@@ -118,7 +118,7 @@ namespace DefaultNamespace
 	        public static bool AButtonPressed =>
 		        WXRDevice.ButtonPress(WVR_DeviceType.WVR_DeviceType_Controller_Right,WVR_InputId.WVR_InputId_Alias1_A);
 	        public static bool BButtonPressed => 
-		        WXRDevice.ButtonPress(WVR_DeviceType.WVR_DeviceType_Controller_Right,WVR_InputId.WVR_InputId_Alias1_Y); 
+		        WXRDevice.ButtonPress(WVR_DeviceType.WVR_DeviceType_Controller_Right,WVR_InputId.WVR_InputId_Alias1_B); 
 	        public static bool XButtonPressed =>
 		        WXRDevice.ButtonPress(WVR_DeviceType.WVR_DeviceType_Controller_Left,WVR_InputId.WVR_InputId_Alias1_X);
 	        public static bool YButtonPressed => 
