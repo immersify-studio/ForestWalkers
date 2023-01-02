@@ -54,7 +54,9 @@ public class TestBuilder
             
             public static string[] ScenesInApp()
             {
+#pragma warning disable CS0618
                 if (Application.levelCount == 0)
+#pragma warning restore CS0618
                 {
                     throw new InvalidOperationException("No levels set in player settings");
                 }
