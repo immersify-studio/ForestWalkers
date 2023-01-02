@@ -16,8 +16,7 @@ namespace DefaultNamespace
         public ScenePerceptionMeshFacade(ScenePerceptionHelper scenePerceptionHelper,AnchorPrefab anchorDisplayPrefab,Material generatedMeshMaterialTranslucent)
         {
             this.scenePerceptionHelper = scenePerceptionHelper ?? throw new ArgumentNullException(nameof(scenePerceptionHelper));
-            if(generatedMeshMaterialTranslucent == null) 
-                throw new ArgumentNullException(nameof(generatedMeshMaterialTranslucent)); 
+            if(generatedMeshMaterialTranslucent == null) throw new ArgumentNullException(nameof(generatedMeshMaterialTranslucent)); 
             generatedPlaneContainer = new GeneratedPlaneContainer(scenePerceptionManager,generatedMeshMaterialTranslucent,anchorDisplayPrefab);
         }
 	    
