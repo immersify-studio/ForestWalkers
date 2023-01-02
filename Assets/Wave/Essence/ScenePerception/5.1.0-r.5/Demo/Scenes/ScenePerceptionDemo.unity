@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 280852152}
   - component: {fileID: 280852151}
   m_Layer: 0
-  m_Name: tttt
+  m_Name: ScenePerception2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -504,15 +504,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passThroughHelper:
-    RoomPanelMeshRenderers: []
-    DemoRoomMaterialOpaque: {fileID: 0}
-    DemoRoomMaterialTransparent: {fileID: 0}
-    hmd: {fileID: 0}
-  anchorPrefab: {fileID: 0}
-  anchorDisplayPrefab: {fileID: 0}
-  GeneratedMeshMaterialTranslucent: {fileID: 0}
-  leftController: {fileID: 0}
-  rightController: {fileID: 0}
+    RoomPanelMeshRenderers:
+    - {fileID: 385990692}
+    - {fileID: 445467453}
+    - {fileID: 1765054320}
+    - {fileID: 359002608}
+    - {fileID: 1000683344}
+    DemoRoomMaterialOpaque: {fileID: 2100000, guid: 5ed089f3573c9f44fa380e9e6ae9f193, type: 2}
+    DemoRoomMaterialTransparent: {fileID: 2100000, guid: c8035e4f8de47e14fbb2b9f6cd338b50, type: 2}
+    hmd: {fileID: 392828147}
+  anchorPrefab: {fileID: 1181631171927676420, guid: b727ac42c429ced43a68ab619e714014, type: 3}
+  anchorDisplayPrefab: {fileID: 6137973343519671895, guid: 0c87a5379eca0c642a8a804630e46fca, type: 3}
+  GeneratedMeshMaterialTranslucent: {fileID: 2100000, guid: b0e2136222c18364894daabc3a3dd31d, type: 2}
+  leftController: {fileID: 1952434028}
+  rightController: {fileID: 223477798}
 --- !u!4 &280852152
 Transform:
   m_ObjectHideFlags: 0
@@ -1298,7 +1303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &676806152
 Transform:
   m_ObjectHideFlags: 0
