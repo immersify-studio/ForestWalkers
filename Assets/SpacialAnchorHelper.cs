@@ -138,9 +138,7 @@ namespace DefaultNamespace
 
         private void SetAnchorPoseInScene(AnchorPrefab anchorPrefab, WVR_SpatialAnchorState anchorState)
         {
-            Vector3 currentAnchorPosition = Vector3.zero;
-            Quaternion currentAnchorRotation = Quaternion.identity;
-            scenePerceptionManager.ApplyTrackingOriginCorrectionToAnchorPose(anchorState, out currentAnchorPosition, out currentAnchorRotation);
+            scenePerceptionManager.ApplyTrackingOriginCorrectionToAnchorPose(anchorState, out Vector3 currentAnchorPosition, out Quaternion currentAnchorRotation);
             anchorPrefab.transform.SetPositionAndRotation(currentAnchorPosition,currentAnchorRotation);
         }
 		
