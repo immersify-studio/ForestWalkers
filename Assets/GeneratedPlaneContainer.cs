@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Wave.Essence.ScenePerception;
-using Wave.Essence.ScenePerception.Sample;
 using Wave.Native;
 
 namespace DefaultNamespace
@@ -11,11 +10,11 @@ namespace DefaultNamespace
     {
         private readonly List<GeneratedPlane> generatedPlanes = new List<GeneratedPlane>();
         
-        private readonly Material generatedMeshMaterialTranslucent;
         private readonly ScenePerceptionManager scenePerceptionManager;
-        private readonly AnchorPrefab anchorDisplayPrefab;
+        private readonly Material generatedMeshMaterialTranslucent;
+        private readonly GameObject anchorDisplayPrefab;
 
-        public GeneratedPlaneContainer(ScenePerceptionManager scenePerceptionManager,Material generatedMeshMaterialTranslucent,AnchorPrefab anchorDisplayPrefab)
+        public GeneratedPlaneContainer(ScenePerceptionManager scenePerceptionManager,Material generatedMeshMaterialTranslucent,GameObject anchorDisplayPrefab)
         {
             this.scenePerceptionManager = scenePerceptionManager ?? throw new ArgumentNullException(nameof(scenePerceptionManager));
             this.generatedMeshMaterialTranslucent = generatedMeshMaterialTranslucent?? throw new ArgumentNullException(nameof(generatedMeshMaterialTranslucent));
@@ -101,7 +100,7 @@ namespace DefaultNamespace
                 switch (action)
                 {
                     case PlaneAction.ADD:
-                        GeneratedPlane newGeneratedPlane = GeneratedPlane.NewPlane(scenePerceptionManager, generatedMeshMaterialTranslucent, anchorDisplayPrefab,currentScenePlane.uuid,currentScenePlane);
+                        GeneratedPlane newGeneratedPlane = NewPlane(currentScenePlane.uuid,currentScenePlane);
                         generatedPlanes.Add(newGeneratedPlane);
                         break;
                     case PlaneAction.REMOVE:
@@ -111,7 +110,7 @@ namespace DefaultNamespace
                     case PlaneAction.UPDATE_EXTENTS:
                         generatedPlane.plane = currentScenePlane;
                         generatedPlane.DestroyGameObject();
-                        generatedPlane.go = GeneratedPlane.GenerateNewGameObject(currentScenePlane, scenePerceptionManager, generatedMeshMaterialTranslucent, anchorDisplayPrefab);
+                        generatedPlane.go = GenerateNewGameObject(currentScenePlane);
                         break;
                     case PlaneAction.UPDATE_POSE:
                         scenePerceptionManager.ApplyTrackingOriginCorrectionToPlanePose(currentScenePlane, out var planePositionUnity, out var planeRotationUnity);
@@ -123,6 +122,26 @@ namespace DefaultNamespace
                         throw new ArgumentOutOfRangeException();
                 }
             }
+        }
+        private GeneratedPlane NewPlane(WVR_Uuid uuid, WVR_ScenePlane plane)
+        {    
+            //Log.d(LOG_TAG, "Add new plane");
+            GameObject newPlaneMeshGO = scenePerceptionManager.GenerateScenePlaneMesh(plane, generatedMeshMaterialTranslucent, true);
+
+            GameObject axisDisplay = UnityEngine.Object.Instantiate(anchorDisplayPrefab, newPlaneMeshGO.transform, true);
+            axisDisplay.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+            return new GeneratedPlane(){uuid = uuid,plane= plane,go = GenerateNewGameObject(plane)};
+            
+        }
+        private GameObject GenerateNewGameObject(WVR_ScenePlane plane)
+        {
+            //Log.d(LOG_TAG, "Add new plane");
+            GameObject newPlaneMeshGO = scenePerceptionManager.GenerateScenePlaneMesh(plane, generatedMeshMaterialTranslucent, true);
+
+            GameObject axisDisplay = UnityEngine.Object.Instantiate(anchorDisplayPrefab, newPlaneMeshGO.transform, true);
+            axisDisplay.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+            return newPlaneMeshGO;
         }
     }
 }

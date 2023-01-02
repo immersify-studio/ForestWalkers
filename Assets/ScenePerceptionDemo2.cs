@@ -9,7 +9,7 @@ namespace DefaultNamespace
     {
 	    [SerializeField] private PassThroughHelper passThroughHelper;
 	    [SerializeField] private AnchorPrefab anchorPrefab;
-	    [SerializeField] private AnchorPrefab anchorDisplayPrefab;
+	    [SerializeField] private GameObject anchorDisplayPrefab;
 
         private ScenePerceptionHelper _scenePerceptionHelper;
         private SpacialAnchorHelper _spacialAnchorHelper;
@@ -18,7 +18,7 @@ namespace DefaultNamespace
         
         //physics stuff?
         private RaycastHit leftControllerRaycastHitInfo = new RaycastHit(), rightControllerRaycastHitInfo = new RaycastHit();
-        private AnchorPrefab AnchorDisplayRight = null;
+        private GameObject AnchorDisplayRight = null; 
         
         //config for scene perception mesh... maybe handle this some other way either through seperate init call and serializing or a serialed dto?
         [SerializeField] private Material GeneratedMeshMaterialTranslucent;
@@ -29,7 +29,7 @@ namespace DefaultNamespace
             if (_scenePerceptionHelper == null)
             {
                 _scenePerceptionHelper = new ScenePerceptionHelper();
-                _spacialAnchorHelper = new SpacialAnchorHelper(_scenePerceptionHelper.scenePerceptionManager, anchorDisplayPrefab);
+                _spacialAnchorHelper = new SpacialAnchorHelper(_scenePerceptionHelper.scenePerceptionManager, anchorPrefab);
                 if (_scenePerceptionHelper.isRunning)
                 {
 	                _spacialAnchorHelper.SetAnchorsShouldBeUpdated();
