@@ -26,6 +26,10 @@ jobs:
         with:
           submodules: 'true'
           lfs: 'true'
+      #workaround for setup-unity requiring libfuse2x and libfuxe3x only is installed in newer ubuntu 
+      - name: InstallLibFuse2x as prerequisite for setup-unity
+        run: |
+          sudo apt install libfuse2
 #not great, but let's also set up java so we can run sdkmanager. probably a way to avoid this.
       #https://github.com/marketplace/actions/setup-unity
       #possible modules on linux - android,ios,webgl,linux-il2cpp,mac-mono,windows-mono 
