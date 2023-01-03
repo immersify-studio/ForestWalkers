@@ -14,7 +14,8 @@ on: [pull_request,workflow_dispatch,push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         unity-version-matrix: [ 2021.3.9f1 ]
@@ -27,9 +28,10 @@ jobs:
           submodules: 'true'
           lfs: 'true'
       #workaround for setup-unity requiring libfuse2x and libfuxe3x only is installed in newer ubuntu 
-      - name: InstallLibFuse2x as prerequisite for setup-unity
-        run: |
-          sudo apt install libfuse2
+#      - name: InstallLibFuse2x as prerequisite for setup-unity
+#        run: |
+#          sudo apt install libfuse2
+      
 #not great, but let's also set up java so we can run sdkmanager. probably a way to avoid this.
       #https://github.com/marketplace/actions/setup-unity
       #possible modules on linux - android,ios,webgl,linux-il2cpp,mac-mono,windows-mono 
