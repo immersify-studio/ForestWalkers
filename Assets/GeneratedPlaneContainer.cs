@@ -100,7 +100,7 @@ namespace DefaultNamespace
                 switch (action)
                 {
                     case PlaneAction.ADD:
-                        GeneratedPlane newGeneratedPlane = NewPlane(currentScenePlane.uuid,currentScenePlane);
+                        GeneratedPlane newGeneratedPlane = NewGeneratedPlanePlane(currentScenePlane.uuid,currentScenePlane);
                         generatedPlanes.Add(newGeneratedPlane);
                         break;
                     case PlaneAction.REMOVE:
@@ -123,13 +123,9 @@ namespace DefaultNamespace
                 }
             }
         }
-        private GeneratedPlane NewPlane(WVR_Uuid uuid, WVR_ScenePlane plane)
+        private GeneratedPlane NewGeneratedPlanePlane(WVR_Uuid uuid, WVR_ScenePlane plane)
         {    
             //Log.d(LOG_TAG, "Add new plane");
-            GameObject newPlaneMeshGO = scenePerceptionManager.GenerateScenePlaneMesh(plane, generatedMeshMaterialTranslucent, true);
-
-            GameObject axisDisplay = UnityEngine.Object.Instantiate(anchorDisplayPrefab, newPlaneMeshGO.transform, true);
-            axisDisplay.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
             return new GeneratedPlane(){uuid = uuid,plane= plane,go = GenerateNewGameObject(plane)};
             
         }
@@ -139,7 +135,8 @@ namespace DefaultNamespace
             GameObject newPlaneMeshGO = scenePerceptionManager.GenerateScenePlaneMesh(plane, generatedMeshMaterialTranslucent, true);
 
             GameObject axisDisplay = UnityEngine.Object.Instantiate(anchorDisplayPrefab, newPlaneMeshGO.transform, true);
-            axisDisplay.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+            axisDisplay.transform.localPosition = Vector3.zero;
+            axisDisplay.transform.localRotation = Quaternion.identity;
 
             return newPlaneMeshGO;
         }
