@@ -1,7 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using Wave.Essence.ScenePerception;
-using Wave.Essence.ScenePerception.Sample;
 using Wave.Native;
 
 namespace DefaultNamespace
