@@ -35,7 +35,8 @@ public class TestBuilder
                 Debug.LogException(e);
             }
             Debug.Log("End build");
-            EditorApplication.Exit(0);
+            if(Application.isBatchMode)
+                EditorApplication.Exit(0);
         }
 
         public class BuildConfig
