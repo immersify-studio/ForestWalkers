@@ -10,14 +10,13 @@ namespace DefaultNamespace
     public class ScenePerceptionMeshFacade
     {
         private readonly ScenePerceptionHelper scenePerceptionHelper;
-        private readonly List<GameObject> generatedSceneMeshGOList = new List<GameObject>();
         private readonly GeneratedPlaneContainer generatedPlaneContainer;
-        private ScenePerceptionManager scenePerceptionManager { get { return scenePerceptionHelper.scenePerceptionManager; } }
+
         public ScenePerceptionMeshFacade(ScenePerceptionHelper scenePerceptionHelper,GameObject anchorDisplayPrefab,Material generatedMeshMaterialTranslucent)
         {
             this.scenePerceptionHelper = scenePerceptionHelper ?? throw new ArgumentNullException(nameof(scenePerceptionHelper));
             if(generatedMeshMaterialTranslucent == null) throw new ArgumentNullException(nameof(generatedMeshMaterialTranslucent)); 
-            generatedPlaneContainer = new GeneratedPlaneContainer(scenePerceptionManager,generatedMeshMaterialTranslucent,anchorDisplayPrefab);
+            generatedPlaneContainer = new GeneratedPlaneContainer(scenePerceptionHelper.scenePerceptionManager,generatedMeshMaterialTranslucent,anchorDisplayPrefab);
         }
 	    
         public void UpdateScenePerceptionMesh()
