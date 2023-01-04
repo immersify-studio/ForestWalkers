@@ -29,7 +29,7 @@ namespace DefaultNamespace
             generatedPlanes.Clear();
         }
         
-        private GeneratedPlane FindGeneratedPlane(WVR_Uuid uuid)
+        private GeneratedPlane FindGeneratedPlane(WVR_Uuid uuid) //TOOD: see if we can just use a list with IEqualityComparer<T> instead of using the IsUUIDEqual to simplify normal operations
         {
             foreach (var plane in generatedPlanes)
             {
